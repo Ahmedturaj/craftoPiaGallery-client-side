@@ -1,14 +1,90 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import PageTitle from "../../../components/PageTitle/PageTitle";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../Provider/AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
+import { updateProfile } from "firebase/auth";
 
 
 const SignUp = () => {
+    const { signUp, setUser, user } = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-    const handleSignUp = e => {
+    const location = useLocation()
+    const navigate = useNavigate()
+    const handleSignUp = (e) => {
         e.preventDefault();
+        const name = e.target.name.value;
+        const photo = e.target.photo.value;
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        const confirmPassword = e.target.confirmPassword.value;
+        if (password.length < 6) {
+            Swal.fire({
+                icon: "warning",
+                text: 'You have to put 6 character In Your Password',
+            });
+            return;
+        } else if (!/[A-Z]/.test(password)) {
+            Swal.fire({
+                icon: "warning",
+                text: 'You have to use at least one Uppercase character In Your Password',
+            });
+            return;
+        }
+        else if (!/[a-z]/.test(password)) {
+            Swal.fire({
+                icon: "warning",
+                text: 'You have to use at least one lowercase character In Your Password',
+            });
+            return;
+        }
+
+        else if (!/[0-9]/.test(password)) {
+            Swal.fire({
+                icon: "warning",
+                text: 'You have to use at least one numeric character In Your Password',
+            });
+            return;
+        }
+        else if (password !== confirmPassword) {
+            Swal.fire({
+                icon: "warning",
+                text: 'put the right password in confirm password',
+            });
+            return;
+        }
+        signUp(name, photo, email, password)
+            .then((result) => {
+                updateProfile(result.user, {
+                    displayName: name,
+                    photoURL: photo
+                })
+
+                setUser(result.user)
+                Swal.fire({
+                    icon: "success",
+                    title: "Success!",
+                    text: `${user && user.displayName} , you have Signed in successfully`,
+                });
+                navigate(location?.state ? location.state : '/')
+
+                e.target.reset();
+            })
+            .catch(error => {
+                const errorMessage = error.message
+                    .split("/")[1]
+                    .replace(/\)\./g, "")
+                    .replace(/-/g, " ")
+                    .replace(/\b\w/g, (char) => char.toUpperCase());
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: `${errorMessage}`,
+                      });
+            })
+
     }
     return (
         <div className="w-4/6 mx-auto border mt-14 border-gray-500 rounded-2xl bg-gray-500 mb-5 shadow-gray-200 shadow-lg">

@@ -1,15 +1,65 @@
 import { FcGoogle } from "react-icons/fc";
 import PageTitle from "../../../components/PageTitle/PageTitle";
 import { TfiGithub } from "react-icons/tfi";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../../Provider/AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const Login = () => {
-    const handleLogIn=(e)=>{
-        e.preventDefault()
+    const { logIn, setUser, googleLogIn, gitHubLogIn, user}=useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+    const handleLogIn = (e) => {
+        e.preventDefault();
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        console.log(email, ' ', password)
+        logIn(email, password)
+            .then((result) => {
+                setUser(result.user)
+                Swal.fire({
+                    icon: "success",
+                    title: "Success!",
+                    text: `${user && user.displayName} , you have logged In Successfully`,
+                  });
+                navigate(location?.state ? location.state : '/')
+                e.target.reset();
+            })
+            .catch(error => {
+                const errorMessage = error.message
+                    .split("/")[1]
+                    .replace(/\)\./g, "")
+                    .replace(/-/g, " ")
+                    .replace(/\b\w/g, (char) => char.toUpperCase());
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: `${errorMessage}`,
+                      });
+            })
+
     }
     const handleGoogle=e=>{
-        e.preventDefault()
+        e.preventDefault();
+        googleLogIn()
+        .then(result=>{
+            setUser(result.user);
+            Swal.fire({
+                icon: "success",
+                title: "Success!",
+                text: `${user?user.displayName:''} , you have Signed in successfully`,
+              });
+              navigate(location?.state ? location.state : '/')
+        })
+        .catch(error=>{
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: `${error.message}`,
+              });
+        })
     }
     const handleGitHub=e=>{
         e.preventDefault()
