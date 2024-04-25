@@ -1,10 +1,9 @@
-// import { useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
 
-// import { AuthContext } from "../../../Provider/AuthProvider/AuthProvider";
+import { Link, NavLink } from "react-router-dom";
+import { RiPaintFill } from "react-icons/ri";
+
 import './nav.css'
 const Navbar = () => {
-    // const { user, logOut, loading } = useContext(AuthContext);
     const navLink = <>
         <li><NavLink to={'/'} className={({ isActive }) => isActive ? 'text-[hsl(112,43%,55%)] border border-[hsl(112,43%,55%)] font-bold  p-2 rounded-md text-xl' : 'text-white text-xl'}>Home</NavLink></li>
         <li><NavLink to={'/update'} className={({ isActive }) => isActive ? 'text-[hsl(112,43%,55%)] border border-[hsl(112,43%,55%)] font-bold  p-2 rounded-md text-xl' : 'text-white text-xl'}>All Art & craft</NavLink></li>
@@ -24,7 +23,8 @@ const Navbar = () => {
              {navLink}
             </ul>
           </div>
-          <a className="btn btn-ghost text-2xl gap-0 font_Jersey ">Craftopia<span className="text-red-600 text-2xl">G</span>allery</a>
+          <a className="btn btn-ghost text-2xl gap-0 font_Jersey "><RiPaintFill className="text-red-600"/>
+            <span className="text-red-600">C</span>rafto<span className="text-red-600">p</span>ia<span className="text-red-600 text-2xl">G</span>aller<span className="text-red-600">y</span></a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
