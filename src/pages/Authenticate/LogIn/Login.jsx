@@ -16,7 +16,7 @@ const Login = () => {
     }
 
     return (
-        <div className="w-4/6 mx-auto border mt-14 border-gray-500 rounded-2xl bg-gray-500 mb-5 shadow-green-200 shadow-lg">
+        <div className="w-4/6 mx-auto border mt-14 border-gray-500 rounded-2xl bg-gray-500 mb-5 shadow-gray-200 shadow-lg">
         <PageTitle title={'SingIn'}></PageTitle>
         <div className="w-full">
             <h1 className="text-center text-3xl font-bold py-2">Please SignIn</h1>
