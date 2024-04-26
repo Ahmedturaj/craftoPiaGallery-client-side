@@ -1,9 +1,19 @@
 import { Fade } from "react-awesome-reveal";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import { Typewriter } from "react-simple-typewriter";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
 
 
 const MyArtAndCraft = () => {
+    const [artAndCrafts, setArtAndCrafts] = useState([]);
+    const { user } = useContext(AuthContext);
+    useEffect(() => {
+        fetch(`http://localhost:5000/myArt/${user?.email}`)
+            .then(res => res.json())
+            .then(data => setArtAndCrafts(data))
+    }, [user])
+    // const { image, item_name, subcategory_name, short_description, price, rating, customization, processing_time, stock_status, user_email, user_name } = artAndCraft
     return (
         <div className="my-14">
             <PageTitle title={'My Art&Craft'}></PageTitle>
@@ -12,11 +22,15 @@ const MyArtAndCraft = () => {
 
                     <Fade duration={3000}>
                         <h2 className="text-2xl text-center font-bold">My Art&Craft <span className="text-[#f17941]"><Typewriter
-                            words={['Explore', 'your', 'Added', 'Art&Craft','Items']}
+                            words={['Explore', 'your', 'Added', 'Art&Craft', 'Items']}
                             loop={0}
                         /></span></h2>
                     </Fade>
                 </div>
+            </div>
+            <div className="">
+                
+               
             </div>
         </div>
     );
