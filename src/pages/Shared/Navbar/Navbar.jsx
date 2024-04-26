@@ -16,7 +16,7 @@ document.querySelector('html').setAttribute('data-theme', localTheme)
     const handleTheme = (e) => {
 
         if (e.target.checked) {
-            setTheme('dracula');
+            setTheme('dark');
         } else {
             setTheme('light')
         }

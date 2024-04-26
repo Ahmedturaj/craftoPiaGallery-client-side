@@ -14,24 +14,30 @@ import AddArtAndCraft from './pages/AddArtAndCraf/AddArtAndCraft';
 import PrivateRoutes from './components/PrivateRoute/PrivateRoute';
 import AllArtAndCraft from './pages/AllArtAndCraft/AllArtAndCraft';
 import MyArtAndCraft from './pages/MyArtAndCraft/MyArtAndCraft';
+import ViewDetail from './components/ViewDetail/ViewDetail';
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
-    children:[
-      {path:'/',element:<Home></Home>},
-      {path:'/logIn',element:<Login></Login>},
-      {path:'/signUp',element:<SignUp></SignUp>},
-      {path:'/addArt',element:<PrivateRoutes><AddArtAndCraft></AddArtAndCraft></PrivateRoutes>},
-      {path:'/allArt',element:<AllArtAndCraft></AllArtAndCraft>},
-      {path:'/myArt',element:<MyArtAndCraft></MyArtAndCraft>}
+    children: [
+      { path: '/', element: <Home></Home> },
+      { path: '/logIn', element: <Login></Login> },
+      { path: '/signUp', element: <SignUp></SignUp> },
+      { path: '/addArt', element: <PrivateRoutes><AddArtAndCraft></AddArtAndCraft></PrivateRoutes> },
+      { path: '/allArt', element: <AllArtAndCraft></AllArtAndCraft> },
+      { path: '/myArt', element: <MyArtAndCraft></MyArtAndCraft> },
+      {
+        path: '/details/:id',
+        element: <ViewDetail></ViewDetail>,
+        loader:({params})=>fetch(`http://localhost:5000/arts/${params.id}`)
+    }
     ]
   },
 ]);
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-   <AuthProvider>
-   <RouterProvider router={router} />
-   </AuthProvider>
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>,
 )

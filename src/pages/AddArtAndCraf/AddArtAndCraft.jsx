@@ -22,34 +22,53 @@ const AddArtAndCraft = () => {
         const user_name = form.user_name.value;
         if (isNaN(processing_time)) {
             Swal.fire({
-              icon: "warning",
-              title: "Oops...",
-              text: "Enter a Number in Processing Time",
+                icon: "warning",
+                title: "Oops...",
+                text: "Enter a Number in Processing Time",
             });
             return;
-          }
+        }
         if (isNaN(price)) {
             Swal.fire({
-              icon: "warning",
-              title: "Oops...",
-              text: "Enter a Number in price",
+                icon: "warning",
+                title: "Oops...",
+                text: "Enter a Number in price",
             });
             return;
-          }
+        }
         if (isNaN(rating)) {
             Swal.fire({
-              icon: "warning",
-              title: "Oops...",
-              text: "Enter a Number in rating",
+                icon: "warning",
+                title: "Oops...",
+                text: "Enter a Number in rating",
             });
             return;
-          }
-          
+        }
+
         const formData = {
             image, item_name, subcategory_name, short_description, price, rating, customization, processing_time, stock_status, user_email, user_name
         };
 
         console.log(formData);
+        fetch('http://localhost:5000/arts', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: "Great!",
+                        text: "You added information successfully!",
+                        icon: "success"
+                    });
+                    form.reset();
+                }
+            })
     };
 
     return (
@@ -97,12 +116,12 @@ const AddArtAndCraft = () => {
                     <div className="flex items-center gap-5 mb-5">
                         <span className="label-text">Customization:</span>
                         <div className="radio radio-inline">
-                            <input type="radio" name="customization" value="yes" required />
-                            <label>Yes</label>
+                            <input id="yes" type="radio" name="customization" value="yes" required />
+                            <label htmlFor="yes">Yes</label>
                         </div>
                         <div className="radio radio-inline">
-                            <input type="radio" name="customization" value="no" required />
-                            <label>No</label>
+                            <input id="no" type="radio" name="customization" value="no" required />
+                            <label htmlFor="no">No</label>
                         </div>
                     </div>
                     <div className="form-control">
@@ -112,12 +131,12 @@ const AddArtAndCraft = () => {
                     <div className="flex items-center gap-10 mb-5">
                         <span className="label-text">Stock Status:</span>
                         <div className="radio radio-inline">
-                            <input type="radio" name="stock_status" value="In stock" required />
-                            <label>InStock</label>
+                            <input id="inStock" type="radio" name="stock_status" value="In stock" required />
+                            <label htmlFor="inStock">InStock</label>
                         </div>
                         <div className="radio radio-inline">
-                            <input type="radio" name="stock_status" value="Made to Order" required />
-                            <label>Order</label>
+                            <input id="order" type="radio" name="stock_status" value="Made to Order" required />
+                            <label htmlFor="order">Order</label>
                         </div>
                     </div>
                     <div className="form-control">
