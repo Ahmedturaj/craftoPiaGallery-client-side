@@ -24,13 +24,16 @@ const router = createBrowserRouter([
       { path: '/logIn', element: <Login></Login> },
       { path: '/signUp', element: <SignUp></SignUp> },
       { path: '/addArt', element: <PrivateRoutes><AddArtAndCraft></AddArtAndCraft></PrivateRoutes> },
-      { path: '/allArt', element: <AllArtAndCraft></AllArtAndCraft> },
+      {
+        path: '/allArt', element: <AllArtAndCraft></AllArtAndCraft>,
+        loader: () => fetch('http://localhost:5000/arts')
+      },
       { path: '/myArt', element: <MyArtAndCraft></MyArtAndCraft> },
       {
         path: '/details/:id',
         element: <PrivateRoutes><ViewDetail></ViewDetail></PrivateRoutes>,
-        loader:({params})=>fetch(`http://localhost:5000/arts/${params.id}`)
-    }
+        loader: ({ params }) => fetch(`http://localhost:5000/arts/${params.id}`)
+      }
     ]
   },
 ]);
