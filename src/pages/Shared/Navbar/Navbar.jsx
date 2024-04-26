@@ -23,9 +23,9 @@ document.querySelector('html').setAttribute('data-theme', localTheme)
     }
   const navLink = <>
     <li><NavLink to={'/'} className={({ isActive }) => isActive ? 'text-[#f17941] border border-[#f17941] font-bold  p-2 rounded-md text-xl' : 'text-black text-xl'}>Home</NavLink></li>
-    <li><NavLink to={'/'} className={({ isActive }) => isActive ? 'text-[#f17941] border border-[#f17941] font-bold  p-2 rounded-md text-xl' : 'text-black text-xl'}>All Art & craft</NavLink></li>
+    <li><NavLink to={'/allArt'} className={({ isActive }) => isActive ? 'text-[#f17941] border border-[#f17941] font-bold  p-2 rounded-md text-xl' : 'text-black text-xl'}>All Art & craft</NavLink></li>
     {loading ? <span className="loading loading-dots loading-md"></span> : user && <li><NavLink to={'/addArt'} className={({ isActive }) => isActive ? 'text-[#f17941] border border-[#f17941] font-bold  p-2 rounded-md text-xl' : 'text-black text-xl'}>Add Art & craft</NavLink></li>}
-    {loading ? <span className="loading loading-dots loading-md"></span> : user && <li><NavLink to={'/'} className={({ isActive }) => isActive ? 'text-[#f17941] border border-[#f17941] font-bold  p-2 rounded-md text-xl' : 'text-black text-xl'}>my Art & craft</NavLink></li>}
+    {loading ? <span className="loading loading-dots loading-md"></span> : user && <li><NavLink to={'/myArt'} className={({ isActive }) => isActive ? 'text-[#f17941] border border-[#f17941] font-bold  p-2 rounded-md text-xl' : 'text-black text-xl'}>my Art & craft</NavLink></li>}
 
 
   </>
@@ -36,12 +36,12 @@ document.querySelector('html').setAttribute('data-theme', localTheme)
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
           </div>
-          <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+          <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-gray-300 rounded-box w-52">
             {navLink}
           </ul>
         </div>
-        <a className="btn btn-ghost text-base md:text-2xl gap-0 font_Jersey "><RiPaintFill className="text-[#f17941]" />
-          <span className="text-[#f17941]">C</span>rafto<span className="text-[#f17941]">p</span>ia<span className="text-[#f17941] text-2xl">G</span>aller<span className="text-[#f17941]">y</span></a>
+        <Link to={'/'} className="btn relative -left-7 md:left-7 btn-ghost text-xs md:text-2xl gap-0 font_Jersey "><RiPaintFill className="text-[#f17941]" />
+          <span className="text-[#f17941]">C</span>rafto<span className="text-[#f17941]">p</span>ia<span className="text-[#f17941] text-base md:text-2xl">G</span>aller<span className="text-[#f17941]">y</span></Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">

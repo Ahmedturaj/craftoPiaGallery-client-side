@@ -12,6 +12,8 @@ import SignUp from './pages/Authenticate/SignUp/SignUp';
 import AuthProvider from './Provider/AuthProvider/AuthProvider';
 import AddArtAndCraft from './pages/AddArtAndCraf/AddArtAndCraft';
 import PrivateRoutes from './components/PrivateRoute/PrivateRoute';
+import AllArtAndCraft from './pages/AllArtAndCraft/AllArtAndCraft';
+import MyArtAndCraft from './pages/MyArtAndCraft/MyArtAndCraft';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -20,7 +22,9 @@ const router = createBrowserRouter([
       {path:'/',element:<Home></Home>},
       {path:'/logIn',element:<Login></Login>},
       {path:'/signUp',element:<SignUp></SignUp>},
-      {path:'/addArt',element:<PrivateRoutes><AddArtAndCraft></AddArtAndCraft></PrivateRoutes>}
+      {path:'/addArt',element:<PrivateRoutes><AddArtAndCraft></AddArtAndCraft></PrivateRoutes>},
+      {path:'/allArt',element:<AllArtAndCraft></AllArtAndCraft>},
+      {path:'/myArt',element:<MyArtAndCraft></MyArtAndCraft>}
     ]
   },
 ]);
