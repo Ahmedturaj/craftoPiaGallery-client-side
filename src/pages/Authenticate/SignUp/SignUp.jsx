@@ -8,7 +8,7 @@ import { updateProfile } from "firebase/auth";
 
 
 const SignUp = () => {
-    const { signUp, setUser, user } = useContext(AuthContext);
+    const { signUp, setUser } = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const location = useLocation()
@@ -63,10 +63,11 @@ const SignUp = () => {
                 })
 
                 setUser(result.user)
+
                 Swal.fire({
                     icon: "success",
                     title: "Success!",
-                    text: `${user && user.displayName} , you have Signed in successfully`,
+                    text: 'you have Signed in successfully',
                 });
                 navigate(location?.state ? location.state : '/')
 
@@ -128,7 +129,7 @@ const SignUp = () => {
                             <span onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="flex justify-end items-center relative bottom-8 mr-5 cursor-pointer  w-8 md:w-11 
                                left-24 md:left-80 lg:left-[670px] text-gray-500">{showConfirmPassword ? <FaEyeSlash /> : <FaEye></FaEye>}</span>
                             <label className="label mt-10">
-                                <Link to={'//logIn'} className="label-text-alt link link-hover text-gray-500">Already Have an account</Link>
+                                <Link to={'/logIn'} className="label-text-alt link link-hover text-gray-500">Already Have an account</Link>
                             </label>
                         </div>
                         <div className="form-control mt-6">

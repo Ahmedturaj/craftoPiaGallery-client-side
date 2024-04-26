@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 
 
 const Login = () => {
-    const { logIn, setUser, googleLogIn, gitHubLogIn, user}=useContext(AuthContext);
+    const { logIn, setUser, googleLogIn, gitHubLogIn}=useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
     const handleLogIn = (e) => {
@@ -19,10 +19,11 @@ const Login = () => {
         logIn(email, password)
             .then((result) => {
                 setUser(result.user)
+                console.log(result.user)
                 Swal.fire({
                     icon: "success",
                     title: "Success!",
-                    text: `${user && user.displayName} , you have logged In Successfully`,
+                    text: 'you have logged In Successfully',
                   });
                 navigate(location?.state ? location.state : '/')
                 e.target.reset();
@@ -49,7 +50,7 @@ const Login = () => {
             Swal.fire({
                 icon: "success",
                 title: "Success!",
-                text: `${user?user.displayName:''} , you have Signed in successfully`,
+                text: 'you have Signed in successfully',
               });
               navigate(location?.state ? location.state : '/')
         })
@@ -62,7 +63,24 @@ const Login = () => {
         })
     }
     const handleGitHub=e=>{
-        e.preventDefault()
+        e.preventDefault();
+        gitHubLogIn()
+        .then(result=>{
+            setUser(result.user);
+            Swal.fire({
+                icon: "success",
+                title: "Success!",
+                text: 'you have Signed in successfully',
+              });
+              navigate(location?.state ? location.state : '/')
+        })
+        .catch(error=>{
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: `${error.message}`,
+              });  
+        })
     }
 
     return (
