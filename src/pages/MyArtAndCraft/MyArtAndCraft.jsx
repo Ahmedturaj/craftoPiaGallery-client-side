@@ -3,6 +3,7 @@ import PageTitle from "../../components/PageTitle/PageTitle";
 import { Typewriter } from "react-simple-typewriter";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
+import MyCard from "./MyCard";
 
 
 const MyArtAndCraft = () => {
@@ -28,8 +29,10 @@ const MyArtAndCraft = () => {
                     </Fade>
                 </div>
             </div>
-            <div className="">
-                
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center">
+               {
+                artAndCrafts.map(artAndCraft=><MyCard key={artAndCraft._id} artAndCraft={artAndCraft}></MyCard>)
+               } 
                
             </div>
         </div>
