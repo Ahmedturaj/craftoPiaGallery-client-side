@@ -16,7 +16,7 @@ const MyCard = ({artAndCraft}) => {
                 <p className='flex items-center gap-2 text-xl'><span className='text-[#f17941] font-bold text-xl'><FcProcess className='text-[#f17941]' /></span> <span className='text-[#f17941]'>Processing Time</span>:{processing_time}</p>
                 <p className='flex items-center gap-2 text-xl'><span className='text-[#f17941] font-bold text-xl'><SiInstatus className='text-[#f17941]' /></span> <span className='text-[#f17941]'>Stock Status</span>:{stock_status}</p>
                 <div className="card-actions justify-end">
-                    <Link to={`/update/${_id}`}><button className="btn bg-[#f17941] text-white">View Ddetails</button></Link>
+                    <Link to={`/update/${_id}`}><button className="btn bg-[#f17941] text-white">Update</button></Link>
                     <button className="btn bg-[#f17941] text-white">Delete</button>
                 </div>
             </div>
