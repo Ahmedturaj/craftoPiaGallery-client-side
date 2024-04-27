@@ -6,7 +6,7 @@ const Home = () => {
     return (
         <div>
             <PageTitle title={'Home'}></PageTitle>
-          <div className="mt-2">
+          <div className="mt-2 relative  md:-top-20">
             <Banner></Banner>
           </div>
           <div className="my-14">

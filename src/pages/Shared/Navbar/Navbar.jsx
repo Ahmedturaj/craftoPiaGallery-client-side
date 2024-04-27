@@ -1,7 +1,6 @@
 
 import { Link, NavLink } from "react-router-dom";
 import { RiPaintFill } from "react-icons/ri";
-
 import './nav.css'
 import { AuthContext } from "../../../Provider/AuthProvider/AuthProvider";
 import { useContext, useEffect, useState } from "react";
@@ -19,15 +18,15 @@ const Navbar = () => {
     setIsChecked(e.target.checked);
   }
   const navLink = <>
-    <li><NavLink to={'/'} className={({ isActive }) => isActive ? 'text-[#f17941] border border-[#f17941] font-bold  p-2 rounded-md text-xl' : 'text-black text-xl'}>Home</NavLink></li>
-    <li><NavLink to={'/allArt'} className={({ isActive }) => isActive ? 'text-[#f17941] border border-[#f17941] font-bold  p-2 rounded-md text-xl' : 'text-black text-xl'}>All Art & craft</NavLink></li>
-    {loading ? <span className="loading loading-dots loading-md"></span> : user && <li><NavLink to={'/addArt'} className={({ isActive }) => isActive ? 'text-[#f17941] border border-[#f17941] font-bold  p-2 rounded-md text-xl' : 'text-black text-xl'}>Add Art & craft</NavLink></li>}
-    {loading ? <span className="loading loading-dots loading-md"></span> : user && <li><NavLink to={'/myArt'} className={({ isActive }) => isActive ? 'text-[#f17941] border border-[#f17941] font-bold  p-2 rounded-md text-xl' : 'text-black text-xl'}>my Art & craft</NavLink></li>}
+    <li><NavLink to={'/'} className={({ isActive }) => isActive ? 'text-[#FFBE98]  border border-[#f17941] font-bold  p-2 rounded-md text-xl' : 'text-[#f17941] text-xl'}>Home</NavLink></li>
+    <li><NavLink to={'/allArt'} className={({ isActive }) => isActive ? 'text-[#FFBE98]  border border-[#f17941] font-bold  p-2 rounded-md text-xl' : 'text-[#f17941] text-xl'}>All Art & craft</NavLink></li>
+    {loading ? <span className="loading loading-dots loading-md"></span> : user && <li><NavLink to={'/addArt'} className={({ isActive }) => isActive ? 'text-[#FFBE98] border border-[#f17941] font-bold  p-2 rounded-md text-xl' : 'text-[#f17941] text-xl'}>Add Art & craft</NavLink></li>}
+    {loading ? <span className="loading loading-dots loading-md"></span> : user && <li><NavLink to={'/myArt'} className={({ isActive }) => isActive ? 'text-[#FFBE98]   border border-[#f17941] font-bold  p-2 rounded-md text-xl' : 'text-[#f17941] text-xl'}>my Art & craft</NavLink></li>}
 
 
   </>
   return (
-    <nav className="navbar bg-gray-300 bg-opacity-40">
+    <nav className="navbar bg-base-content bg-opacity-5 absolute z-10">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -37,7 +36,7 @@ const Navbar = () => {
             {navLink}
           </ul>
         </div>
-        <Link to={'/'} className="btn relative -left-7 md:left-7 btn-ghost text-xs md:text-2xl gap-0 font_Jersey "><RiPaintFill className="text-[#f17941]" />
+        <Link to={'/'} className="btn relative -left-7 md:left-7 btn-ghost text-xs md:text-2xl gap-0 font_Jersey text-red-300 "><RiPaintFill className="text-[#f17941]" />
           <span className="text-[#f17941]">C</span>rafto<span className="text-[#f17941]">p</span>ia<span className="text-[#f17941] text-base md:text-2xl">G</span>aller<span className="text-[#f17941]">y</span></Link>
       </div>
       <div className="navbar-center hidden lg:flex">
