@@ -8,13 +8,19 @@ import MyCard from "./MyCard";
 
 const MyArtAndCraft = () => {
     const [artAndCrafts, setArtAndCrafts] = useState([]);
+    const [customizations, setCustomizations] = useState("");
     const { user } = useContext(AuthContext);
     useEffect(() => {
         fetch(`http://localhost:5000/myArt/${user?.email}`)
             .then(res => res.json())
             .then(data => setArtAndCrafts(data))
     }, [user])
-    // const { image, item_name, subcategory_name, short_description, price, rating, customization, processing_time, stock_status, user_email, user_name } = artAndCraft
+    const handleCustomizationChange = (event) => {
+        setCustomizations(event.target.value);
+    };
+    const filteredItems = customizations
+        ? artAndCrafts.filter((item) => item.customization === customizations)
+        : artAndCrafts;
     return (
         <div className="my-14">
             <PageTitle title={'My Art&Craft'}></PageTitle>
@@ -28,12 +34,30 @@ const MyArtAndCraft = () => {
                         /></span></h2>
                     </Fade>
                 </div>
+                <div className="flex justify-center">
+                    <div className=" my-5">
+                        <select
+                            value={customizations}
+                            onChange={handleCustomizationChange}
+                            className="border border-[#f17941] rounded-md px-2 py-1"
+                        >
+                            <option value="">All Customizations</option>
+                            {Array.from(new Set(artAndCrafts.map((item) => item.customization))).map(
+                                (customization) => (
+                                    <option key={customization} value={customization}>
+                                        {customization}
+                                    </option>
+                                )
+                            )}
+                        </select>
+                    </div>
+                </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center">
-               {
-                artAndCrafts.map(artAndCraft=><MyCard key={artAndCraft._id} artAndCraft={artAndCraft}></MyCard>)
-               } 
-               
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-6">
+                {
+                    filteredItems && filteredItems.map(artAndCraft => (<MyCard key={artAndCraft._id} artAndCraft={artAndCraft} artAndCrafts={artAndCrafts} setArtAndCrafts={setArtAndCrafts}></MyCard>))
+                }
+                
             </div>
         </div>
     );

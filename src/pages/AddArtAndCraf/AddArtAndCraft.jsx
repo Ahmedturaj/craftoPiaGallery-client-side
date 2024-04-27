@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import PageTitle from "../../components/PageTitle/PageTitle";
+import { Fade } from "react-awesome-reveal";
+import { Typewriter } from "react-simple-typewriter";
 
 
 const AddArtAndCraft = () => {
@@ -64,7 +66,9 @@ const AddArtAndCraft = () => {
                     Swal.fire({
                         title: "Great!",
                         text: "You added information successfully!",
-                        icon: "success"
+                        icon: "success",
+                        timer: 1500,
+                        showConfirmButton: false
                     });
                     form.reset();
                 }
@@ -74,7 +78,15 @@ const AddArtAndCraft = () => {
     return (
         <div className="w-4/6 mx-auto border mt-14 border-gray-500 rounded-2xl bg-gray-500 mb-5 shadow-gray-200 shadow-lg">
             <PageTitle title={'Add Art&Craft'}></PageTitle>
-            <h1 className="text-left ml-2 text-3xl font-bold py-2">Add Art & Craft Item</h1>
+            <div className=" flex gap-3 items-center  border-b-2 rounded-lg border-[#f17941] md:w-96  mb-5"> <img src="https://assets-global.website-files.com/5e51c674258ffe10d286d30a/5e5358878e2493fbea064dd9_peep-59.svg" alt="" className="w-14" />
+
+                <Fade duration={3000}>
+                    <h2 className="text-2xl text-center font-bold">Add <span className="text-[#f17941]"><Typewriter
+                        words={['Information']}
+                        loop={0}
+                    /></span></h2>
+                </Fade>
+            </div>
             <div className="card shrink-0 w-full p-4 bg-base-100 ">
                 <form onSubmit={handleSubmit} className="card-body w-full">
                     <div className="form-control">

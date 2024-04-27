@@ -65,10 +65,12 @@ const SignUp = () => {
                 setUser(result.user)
 
                 Swal.fire({
+                    position: "top-end",
                     icon: "success",
-                    title: "Success!",
-                    text: 'you have Signed in successfully',
-                });
+                    title: "You have Signed up successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
                 navigate(location?.state ? location.state : '/')
 
                 e.target.reset();

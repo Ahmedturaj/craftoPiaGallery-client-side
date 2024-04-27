@@ -66,7 +66,9 @@ const Update = () => {
                 Swal.fire({
                     title: "Great!",
                     text: "You Updated information successfully!",
-                    icon: "success"
+                    icon: "success",
+                    timer:1500,
+                    showConfirmButton:false
                 });
                 
             }
@@ -79,8 +81,8 @@ const Update = () => {
                 <div className=" flex gap-3 items-center  border-b-2 rounded-lg border-[#f17941] md:w-96  mb-5"> <img src="https://assets-global.website-files.com/5e51c674258ffe10d286d30a/5e5358878e2493fbea064dd9_peep-59.svg" alt="" className="w-14" />
 
                     <Fade duration={3000}>
-                        <h2 className="text-2xl text-center font-bold"><span className="text-[#f17941]"><Typewriter
-                            words={['Update', 'Your', 'Information']}
+                        <h2 className="text-2xl text-center font-bold">Update <span className="text-[#f17941]"><Typewriter
+                            words={['Your', 'Information']}
                             loop={0}
                         /></span></h2>
                     </Fade>

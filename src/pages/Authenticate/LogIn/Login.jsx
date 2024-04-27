@@ -21,9 +21,11 @@ const Login = () => {
                 setUser(result.user)
                 console.log(result.user)
                 Swal.fire({
+                    position: "top-end",
                     icon: "success",
-                    title: "Success!",
-                    text: 'you have logged In Successfully',
+                    title: "You have Signed in successfully",
+                    showConfirmButton: false,
+                    timer: 1500
                   });
                 navigate(location?.state ? location.state : '/')
                 e.target.reset();
@@ -48,9 +50,11 @@ const Login = () => {
         .then(result=>{
             setUser(result.user);
             Swal.fire({
+                position: "top-end",
                 icon: "success",
-                title: "Success!",
-                text: 'you have Signed in successfully',
+                title: "You have Signed in successfully",
+                showConfirmButton: false,
+                timer: 1500
               });
               navigate(location?.state ? location.state : '/')
         })
@@ -68,9 +72,11 @@ const Login = () => {
         .then(result=>{
             setUser(result.user);
             Swal.fire({
+                position: "top-end",
                 icon: "success",
-                title: "Success!",
-                text: 'you have Signed in successfully',
+                title: "You have Signed in successfully",
+                showConfirmButton: false,
+                timer: 1500
               });
               navigate(location?.state ? location.state : '/')
         })
