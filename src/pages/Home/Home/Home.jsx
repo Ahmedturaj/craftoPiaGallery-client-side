@@ -2,6 +2,7 @@ import PageTitle from "../../../components/PageTitle/PageTitle";
 import Banner from "../Banner/Banner";
 import CardCategory from "../CardCategory/CardCategory";
 import CraftItems from "../CraftItems/CraftItems";
+import Subscribers from "../Subscribers/Subscribers";
 
 const Home = () => {
   return (
@@ -13,8 +14,11 @@ const Home = () => {
       <div className="my-14">
         <CraftItems></CraftItems>
       </div>
-      <div className="">
+      <div className="mb-4">
         <CardCategory></CardCategory>
+      </div>
+      <div className="my-10">
+        <Subscribers></Subscribers>
       </div>
     </div>
   );

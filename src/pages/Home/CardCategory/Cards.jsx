@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const Cards = ({ category }) => {
     return (
         <Link to={`/subcategory/${category.subcategory_name}`}>
-            <Fade cascade damping={0.1}>
+            <Fade cascade damping={0.5}>
                 <div className="card card-compact w-80 h-[500px] bg-base-100 border-l-2 border-r-2 border-b-2 border-[#f17941]  rounded-lg shadow-[#f17941] shadow-md">
                     <figure><img src={category.image} alt="Shoes" /></figure>
                     <div className="card-body">
