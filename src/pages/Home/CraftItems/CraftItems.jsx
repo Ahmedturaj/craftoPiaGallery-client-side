@@ -6,7 +6,7 @@ import { Fade, Slide } from "react-awesome-reveal";
 const CraftItems = () => {
     const [craftsItems, setCraftItems] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/arts')
+        fetch('https://b9a10-server-side.vercel.app/arts')
             .then(res => res.json())
             .then(data => setCraftItems(data))
     }, [])
@@ -28,7 +28,7 @@ const CraftItems = () => {
                     </p>
                 </Slide>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 w-10/12 mx-auto my-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:w-10/12 mx-auto my-12">
                 {
                     craftsItems.slice(0, 6).map(craftsItem => <CraftItem key={craftsItem._id} craftsItem={craftsItem}></CraftItem>)
                 }

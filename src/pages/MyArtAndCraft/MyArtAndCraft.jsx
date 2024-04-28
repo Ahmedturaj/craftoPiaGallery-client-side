@@ -11,7 +11,7 @@ const MyArtAndCraft = () => {
     const [customizations, setCustomizations] = useState("");
     const { user } = useContext(AuthContext);
     useEffect(() => {
-        fetch(`http://localhost:5000/myArt/${user?.email}`)
+        fetch(`https://b9a10-server-side.vercel.app/myArt/${user?.email}`)
             .then(res => res.json())
             .then(data => setArtAndCrafts(data))
     }, [user])

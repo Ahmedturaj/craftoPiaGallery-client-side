@@ -19,7 +19,7 @@ const Footer = () => {
         const user = { name, email, photo };
         console.log(user);
         const dialog = document.getElementById('my_modal_1')
-        fetch('http://localhost:5000/users', {
+        fetch('https://b9a10-server-side.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

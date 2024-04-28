@@ -18,11 +18,13 @@ import ViewDetail from './components/ViewDetail/ViewDetail';
 import Update from './components/Update/Update';
 import Subcategory from './components/Subcategory/Subcategory';
 import SubDetails from './components/ViewDetail/SubDetails';
+import ErrorPage from './pages/ErrorPage/ErrorPage';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       { path: '/', element: <Home></Home> },
       { path: '/logIn', element: <Login></Login> },
@@ -30,7 +32,7 @@ const router = createBrowserRouter([
       { path: '/addArt', element: <PrivateRoutes><AddArtAndCraft></AddArtAndCraft></PrivateRoutes> },
       {
         path: '/allArt', element: <AllArtAndCraft></AllArtAndCraft>,
-        loader: () => fetch('http://localhost:5000/arts')
+        loader: () => fetch('https://b9a10-server-side.vercel.app/arts')
       },
       {
         path: '/myArt', element: <PrivateRoutes><MyArtAndCraft></MyArtAndCraft></PrivateRoutes>
@@ -38,22 +40,22 @@ const router = createBrowserRouter([
       {
         path: '/details/:id',
         element: <PrivateRoutes><ViewDetail></ViewDetail></PrivateRoutes>,
-        loader: ({ params }) => fetch(`http://localhost:5000/arts/${params.id}`)
+        loader: ({ params }) => fetch(`https://b9a10-server-side.vercel.app/arts/${params.id}`)
       },
       {
         path: '/category/:id',
         element: <SubDetails></SubDetails>,
-        loader:({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
+        loader: ({ params }) => fetch(`https://b9a10-server-side.vercel.app/category/${params.id}`)
       },
       {
         path: '/update/:id',
         element: <PrivateRoutes><Update></Update></PrivateRoutes>,
-        loader: ({ params }) => fetch(`http://localhost:5000/arts/${params.id}`)
+        loader: ({ params }) => fetch(`https://b9a10-server-side.vercel.app/arts/${params.id}`)
       },
       {
         path: '/subcategory/:subcategory_name',
         element: <Subcategory></Subcategory>,
-        loader: ({ params }) => fetch(`http://localhost:5000/categories/${params.subcategory_name}`)
+        loader: ({ params }) => fetch(`https://b9a10-server-side.vercel.app/categories/${params.subcategory_name}`)
       }
     ]
   },

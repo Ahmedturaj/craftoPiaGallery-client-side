@@ -5,7 +5,7 @@ import Footer from "../../pages/Shared/Footer/Footer";
 const Main = () => {
     return (
       <div className="flex flex-col h-screen bg-base-200">
-      <div className="mb-14">
+      <div className="md:mb-12 lg:mb-14 lg:pb-6">
           <Navbar/>
       </div>
       <div className="flex-1 bg-base-200">

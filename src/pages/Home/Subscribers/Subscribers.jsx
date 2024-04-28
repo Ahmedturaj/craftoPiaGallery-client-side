@@ -5,7 +5,7 @@ import { Typewriter } from "react-simple-typewriter";
 const Subscribers = () => {
     const [subscribers, setSubscribers] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/users')
+        fetch('https://b9a10-server-side.vercel.app/users')
             .then(res => res.json())
             .then(data => setSubscribers(data))
     }, []);

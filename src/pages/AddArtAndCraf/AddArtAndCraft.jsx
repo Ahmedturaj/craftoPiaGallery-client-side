@@ -52,7 +52,7 @@ const AddArtAndCraft = () => {
         };
 
         console.log(formData);
-        fetch('http://localhost:5000/arts', {
+        fetch('https://b9a10-server-side.vercel.app/arts', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

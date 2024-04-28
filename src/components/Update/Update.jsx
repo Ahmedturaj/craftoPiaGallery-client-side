@@ -53,7 +53,7 @@ const Update = () => {
         const formData = {
             image, item_name, subcategory_name, short_description, price, rating, customization, processing_time, stock_status, user_email, user_name
         };
-        fetch(`http://localhost:5000/arts/${loadedData._id}`,{
+        fetch(`https://b9a10-server-side.vercel.app/arts/${loadedData._id}`,{
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -76,7 +76,7 @@ const Update = () => {
     }
     return (
         <div>
-            <div className="w-4/6 mx-auto border mt-14 border-[#f17941] rounded-2xl bg-gray-500 mb-5 shadow-[#f17941] shadow-lg">
+            <div className="w-4/6 mx-auto border  border-[#f17941] rounded-2xl bg-gray-500 mb-5 shadow-[#f17941] shadow-lg mt-20">
                 <PageTitle title={`update of ${item_name}`}></PageTitle>
                 <div className=" flex gap-3 items-center  border-b-2 rounded-lg border-[#f17941] md:w-96  mb-5"> <img src="https://assets-global.website-files.com/5e51c674258ffe10d286d30a/5e5358878e2493fbea064dd9_peep-59.svg" alt="" className="w-14" />
 
