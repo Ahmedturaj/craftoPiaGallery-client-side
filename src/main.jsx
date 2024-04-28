@@ -16,6 +16,9 @@ import AllArtAndCraft from './pages/AllArtAndCraft/AllArtAndCraft';
 import MyArtAndCraft from './pages/MyArtAndCraft/MyArtAndCraft';
 import ViewDetail from './components/ViewDetail/ViewDetail';
 import Update from './components/Update/Update';
+import Subcategory from './components/Subcategory/Subcategory';
+import SubDetails from './components/ViewDetail/SubDetails';
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -38,9 +41,19 @@ const router = createBrowserRouter([
         loader: ({ params }) => fetch(`http://localhost:5000/arts/${params.id}`)
       },
       {
+        path: '/category/:id',
+        element: <SubDetails></SubDetails>,
+        loader:({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
+      },
+      {
         path: '/update/:id',
         element: <PrivateRoutes><Update></Update></PrivateRoutes>,
-        loader:({params})=>fetch(`http://localhost:5000/arts/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/arts/${params.id}`)
+      },
+      {
+        path: '/subcategory/:subcategory_name',
+        element: <Subcategory></Subcategory>,
+        loader: ({ params }) => fetch(`http://localhost:5000/categories/${params.subcategory_name}`)
       }
     ]
   },
