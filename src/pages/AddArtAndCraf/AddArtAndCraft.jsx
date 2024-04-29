@@ -4,10 +4,12 @@ import Swal from "sweetalert2";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import { Fade } from "react-awesome-reveal";
 import { Typewriter } from "react-simple-typewriter";
+import { useNavigate } from "react-router-dom";
 
 
 const AddArtAndCraft = () => {
     const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -71,12 +73,13 @@ const AddArtAndCraft = () => {
                         showConfirmButton: false
                     });
                     form.reset();
+                    navigate('/myArt')
                 }
             })
     };
 
     return (
-        <div className="w-4/6 mx-auto border mt-14 border-gray-500 rounded-2xl bg-gray-500 mb-5 shadow-gray-200 shadow-lg">
+        <div className="w-full sm:w-4/6 mx-auto border mt-24 border-gray-500 rounded-2xl bg-gray-500 mb-5 shadow-gray-200 shadow-lg">
             <PageTitle title={'Add Art&Craft'}></PageTitle>
             <div className=" flex gap-3 items-center  border-b-2 rounded-lg border-[#f17941] md:w-96  mb-5"> <img src="https://assets-global.website-files.com/5e51c674258ffe10d286d30a/5e5358878e2493fbea064dd9_peep-59.svg" alt="" className="w-14" />
 
@@ -101,12 +104,32 @@ const AddArtAndCraft = () => {
                         </label>
                         <input type="text" placeholder="Item Name" name="item_name" className="input input-bordered w-full border-2 border-gray-500 border-dotted" required />
                     </div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Subcategory Name:</span>
+
+
+                    <div className=" mb-4 flex flex-wrap items-center gap-3">
+                        <label
+                            htmlFor="subcategoryName"
+                            className="block font-medium text-lg mb-2"
+                        >
+                            Subcategory Name
                         </label>
-                        <input type="text" placeholder="Subcategory Name" name="subcategory_name" className="input input-bordered w-full border-2 border-gray-500 border-dotted" required />
+                        <select
+                            name="subcategory_name"
+                            className="p-2 rounded-md border border-gray-300"
+                            required
+                             >
+                            <option value="" disabled selected>Select subcategory</option>
+                            <option value="Landscape Painting">Landscape Painting</option>
+                            <option value="Portrait Drawing">Portrait Drawing</option>
+                            <option value="Watercolour Painting">
+                                Watercolour Painting
+                            </option>
+                            <option value="Oil Painting">Oil Painting</option>
+                            <option value="Charcoal Sketching">Charcoal Sketching</option>
+                            <option value="Cartoon Drawing">Cartoon Drawing</option>
+                        </select>
                     </div>
+
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Short Description:</span>

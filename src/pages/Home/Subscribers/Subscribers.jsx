@@ -36,7 +36,7 @@ const Subscribers = () => {
                                 className="h-96 w-full"
                                 alt={`photos of ${subscriber.name}`}
                             />
-                            <div className="subscriber-info absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-2 rounded-lg shadow-[#f17941]  border border-[#f17941] shadow-md">
+                            <div className="subscriber-info absolute top-3/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-2 rounded-lg shadow-[#f17941]  border border-[#f17941] shadow-md">
                                 <p className="text-[#f17941]">Subscriber's Name: {subscriber.name}</p>
                                 <p className="text-[#f17941]">Email: {subscriber.email}</p>
                             </div>

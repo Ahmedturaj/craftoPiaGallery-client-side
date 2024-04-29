@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import PageTitle from "../PageTitle/PageTitle";
 import Swal from "sweetalert2";
 import { useContext } from "react";
@@ -9,8 +9,9 @@ import { Typewriter } from "react-simple-typewriter";
 
 const Update = () => {
     const loadedData = useLoaderData();
-    const {user}=useContext(AuthContext);
-    const { image, item_name, subcategory_name, short_description, price, rating, customization, processing_time, stock_status} = loadedData
+    const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const { image, item_name, subcategory_name, short_description, price, rating, customization, processing_time, stock_status } = loadedData
     const handleUpdate = e => {
         e.preventDefault();
         const form = e.target;
@@ -53,26 +54,26 @@ const Update = () => {
         const formData = {
             image, item_name, subcategory_name, short_description, price, rating, customization, processing_time, stock_status, user_email, user_name
         };
-        fetch(`https://b9a10-server-side.vercel.app/arts/${loadedData._id}`,{
+        fetch(`https://b9a10-server-side.vercel.app/arts/${loadedData._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
             body: JSON.stringify(formData)
         })
-        .then(res=>res.json())
-        .then(data=>{
-            if (data.modifiedCount > 0) {
-                Swal.fire({
-                    title: "Great!",
-                    text: "You Updated information successfully!",
-                    icon: "success",
-                    timer:1500,
-                    showConfirmButton:false
-                });
-                
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    Swal.fire({
+                        title: "Great!",
+                        text: "You Updated information successfully!",
+                        icon: "success",
+                        timer: 1500,
+                        showConfirmButton: false
+                    });
+                    navigate('/myArt')
+                }
+            })
     }
     return (
         <div>
@@ -87,14 +88,14 @@ const Update = () => {
                         /></span></h2>
                     </Fade>
                 </div>
-            
+
                 <div className="card shrink-0 w-full p-4 bg-base-100 ">
                     <form onSubmit={handleUpdate} className="card-body w-full">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Image URL:</span>
                             </label>
-                            <input type="text" defaultValue={image} name="image" className="input input-bordered w-full border-2 border-[#f17941] border-dotted" required />
+                            <input type="url" defaultValue={image} name="image" className="input input-bordered w-full border-2 border-[#f17941] border-dotted" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -102,23 +103,41 @@ const Update = () => {
                             </label>
                             <input type="text" defaultValue={item_name} name="item_name" className="input input-bordered w-full border-2 border-[#f17941] border-dotted" required />
                         </div>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Subcategory Name:</span>
+
+
+                        <div className=" mb-4 flex flex-wrap items-center gap-3">
+                            <label
+                                htmlFor="subcategoryName"
+                                className="block font-medium text-lg mb-2"
+                            >
+                                Subcategory Name
                             </label>
-                            <input type="text" defaultValue={subcategory_name} name="subcategory_name" className="input input-bordered w-full border-2 border-[#f17941] border-dotted" required />
+                            <select
+                                name="subcategory_name"
+                                className="p-2 rounded-md border border-gray-300"
+                                defaultValue={subcategory_name}
+                            >
+                             
+                                <option value="Portrait Drawing">Portrait Drawing</option>
+                                <option value="Watercolour Painting">
+                                    Watercolour Painting
+                                </option>
+                                <option value="Oil Painting">Oil Painting</option>
+                                <option value="Charcoal Sketching">Charcoal Sketching</option>
+                                <option value="Cartoon Drawing">Cartoon Drawing</option>
+                            </select>
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Short Description:</span>
                             </label>
-                            <textarea defaultValue={short_description} name="short_description" className="input input-bordered w-full border-2 border-[#f17941] border-dotted"  />
+                            <textarea defaultValue={short_description} name="short_description" className="input input-bordered w-full border-2 border-[#f17941] border-dotted" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Price:</span>
                             </label>
-                            <input type="text" defaultValue={price} name="price" className="input input-bordered w-full border-2 border-[#f17941] border-dotted" required/>
+                            <input type="text" defaultValue={price} name="price" className="input input-bordered w-full border-2 border-[#f17941] border-dotted" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -133,7 +152,7 @@ const Update = () => {
                                 <label htmlFor="yes">Yes</label>
                             </div>
                             <div className="radio radio-inline">
-                                <input id="no" type="radio" name="customization" value="no" defaultChecked={customization === "no"}  required />
+                                <input id="no" type="radio" name="customization" value="no" defaultChecked={customization === "no"} required />
                                 <label htmlFor="no">No</label>
                             </div>
                         </div>
