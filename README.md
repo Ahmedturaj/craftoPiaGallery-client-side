@@ -23,7 +23,7 @@ Painting and Drawing
 
 ## Installation
 
-1. Clone the repository: git clone [repository-url]<https://github.com/programming-hero-web-course-4/B9A10-client-side-Ahmedturaj.git>
+1. Clone the repository: git clone <https://github.com/programming-hero-web-course-4/B9A10-client-side-Ahmedturaj.git>
 2. Install dependencies: `npm install`
 3. Start the development server: `npm start`
 
