@@ -6,6 +6,11 @@ Welcome to CraftopiaGallery, your destination for exploring art and craft master
 
 CraftopiaGallery is a single-page web application dedicated to showcasing a diverse collection of art and craft pieces. From Landscape Painting to Cartoon Drawing, we offer a wide range of categories for art enthusiasts to explore and enjoy.
 
+
+## Selected Category
+
+Painting and Drawing
+
 ## Features
 
 - **Diverse Collection:** Explore various categories such as Landscape Painting, Portrait Drawing, Watercolour Painting, Oil Painting, Charcoal Sketching, and Cartoon Drawing.

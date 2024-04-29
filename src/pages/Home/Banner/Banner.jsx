@@ -17,21 +17,21 @@ const Banner = () => {
         <div className='w-full container'>
             <div className="carousel w-full">
                 <div id="slide1" className="carousel-item relative w-full">
-                    <video src={video1} className='w-full lg:h-[710px]' loop muted></video>
+                    <video src={video1} className=' lg:h-[715px]' loop muted></video>
                     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                         <a href="#slide3" className=" text-[#f17941]">❮</a>
                         <a href="#slide2" className=" text-[#f17941]">❯</a>
                     </div>
                 </div>
                 <div id="slide2" className="carousel-item relative w-full">
-                    <video src={video2} className='w-full md:h-[705px]' loop muted></video>
+                    <video src={video2} className='w-full md:h-[715px]' loop muted></video>
                     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                         <a href="#slide1" className=" text-[#f17941]">❮</a>
                         <a href="#slide3" className=" text-[#f17941]">❯</a>
                     </div>
                 </div>
                 <div id="slide3" className="carousel-item relative w-full">
-                    <video src={video3} className='w-full md:h-[705px]' loop muted></video>
+                    <video src={video3} className='w-full md:h-[715px]' loop muted></video>
                     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                         <a href="#slide2" className=" text-[#f17941]">❮</a>
                         <a href="#slide1" className=" text-[#f17941]">❯</a>

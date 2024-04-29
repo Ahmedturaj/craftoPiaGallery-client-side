@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <div>
       <PageTitle title={'Home'}></PageTitle>
-      <div className=" md:mt-2 relative  md:-top-[88px]">
+      <div className=" md:mt-2 relative  md:-top-[90px]">
         <Banner></Banner>
       </div>
       <div className="my-14">

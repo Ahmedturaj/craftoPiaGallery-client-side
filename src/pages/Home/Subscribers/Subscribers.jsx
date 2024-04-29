@@ -13,7 +13,7 @@ const Subscribers = () => {
 
     return (
         <div className="w-10/12 ml-10 md:ml-20 my-24 mx-auto">
-            <div className=" flex mb-14 gap-3 items-center justify-center border-b-2 rounded-lg border-[#f17941] w-80 md:ml-20"> <img src="https://assets-global.website-files.com/5e51c674258ffe10d286d30a/5e53552ff5fa1a9d22f727e2_peep-35.svg" alt="" className="w-14" />
+            <div className=" flex mb-14 gap-3 items-center justify-center border-b-2 rounded-lg border-[#f17941] w-full md:w-80 md:ml-20"> <img src="https://assets-global.website-files.com/5e51c674258ffe10d286d30a/5e53552ff5fa1a9d22f727e2_peep-35.svg" alt="" className="w-14" />
 
                 <Fade duration={2000}>
                     <h2 className="text-2xl text-center md:text-left font-bold">Our Subscribers :<Typewriter
