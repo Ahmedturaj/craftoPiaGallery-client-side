@@ -9,7 +9,7 @@ const AllArtAndCraft = () => {
   const loadedData = useLoaderData();
 
   return (
-    <div className="my-14 w-full">
+    <div className="my-24 w-full">
       <PageTitle title={'All Art&Craft'}></PageTitle>
       <div className=" flex gap-3 items-center justify-center border-b-2 rounded-lg border-[#f17941] w-full md:w-96 mx-auto"> <img src="https://assets-global.website-files.com/5e51c674258ffe10d286d30a/5e5358878e2493fbea064dd9_peep-59.svg" alt="" className="w-14" />
 

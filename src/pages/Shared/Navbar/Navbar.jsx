@@ -63,7 +63,10 @@ const Navbar = () => {
             user ? <>
               <button onClick={logOut} className="p-1 cursor-pointer rounded md:btn lg:btn text-[#f2f2f2f2] md:text-[#f2f2f2f2] lg:text-[#f2f2f2f2] text-base md:text-xl bg-[#f17941] md:bg-[#f17941] lg:bg-[#f17941] hover:bg-[#f17941]">LogOut</button>
             </> :
-              <Link to={'/logIn'}>  <button className="p-1 cursor-pointer rounded md:btn lg:btn text-[#f2f2f2f2] md:text-[#f2f2f2f2] lg:text-[#f2f2f2f2] text-base md:text-xl bg-[#f17941] md:bg-[#f17941] lg:bg-[#f17941] hover:bg-[#f17941]">Login</button></Link>
+              <>
+              <Link to={'/logIn'}>  <button className="p-1 cursor-pointer rounded md:btn lg:btn text-[#f2f2f2f2] md:text-[#f2f2f2f2] lg:text-[#f2f2f2f2] text-xs mr-2 ml-2 md:text-xl bg-[#f17941] md:bg-[#f17941] lg:bg-[#f17941] hover:bg-[#f17941]">SignIn</button></Link>
+              <Link to={'/SignUp'}>  <button className="p-1 cursor-pointer rounded md:btn lg:btn text-[#f2f2f2f2] md:text-[#f2f2f2f2] lg:text-[#f2f2f2f2] text-xs  md:text-xl bg-[#f17941] md:bg-[#f17941] lg:bg-[#f17941] hover:bg-[#f17941]">SignUp</button></Link>
+              </>
           }
         </div>}
       </div>

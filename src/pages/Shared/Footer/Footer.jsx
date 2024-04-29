@@ -1,8 +1,9 @@
 import { useContext } from "react";
-import { RiPaintFill } from "react-icons/ri";
+import { RiFacebookBoxFill, RiPaintFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import { FaGithubAlt, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
     const { user } = useContext(AuthContext);
@@ -63,6 +64,11 @@ const Footer = () => {
                             Explore the world of art and craft with our diverse collection of
                             artistic masterpieces.
                         </p>
+                        <div className=" flex justify-center items-center gap-10 mt-7">
+                            <Link title="visit our facebook site" target="-blank" to={'https://www.facebook.com/quiet.lam'} className="text-4xl hover:text-[#f17941]"><RiFacebookBoxFill /></Link>
+                            <Link title="visit our Instagram site" target="-blank" to={'https://www.instagram.com/the_shekh_toukir_ahmed/'} className="text-4xl hover:text-[#f17941]"><FaInstagram /></Link>
+                            <Link title="visit our gitHub repository" target="-blank" to={'https://github.com/Ahmedturaj'} className="text-4xl hover:text-[#f17941]"><FaGithubAlt /></Link>
+                        </div>
                         <div className="flex justify-center md:justify-start mt-4">
                             <a
                                 href="#"
@@ -91,9 +97,6 @@ const Footer = () => {
                             </li>
                             <li className="hover:text-[#f17941] mb-2">
                                 <a href="/allArt">All Art and Craft</a>
-                            </li>
-                            <li className="hover:text-[#f17941] mb-2">
-                                <a href="/signUp">Sign Up</a>
                             </li>
                         </ul>
                     </div>
