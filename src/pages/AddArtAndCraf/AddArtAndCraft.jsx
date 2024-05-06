@@ -5,11 +5,14 @@ import PageTitle from "../../components/PageTitle/PageTitle";
 import { Fade } from "react-awesome-reveal";
 import { Typewriter } from "react-simple-typewriter";
 import { useNavigate } from "react-router-dom";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 
 const AddArtAndCraft = () => {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
+    const url = '/arts';
+    const axiosSecure = useAxiosSecure();
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -54,17 +57,10 @@ const AddArtAndCraft = () => {
         };
 
         console.log(formData);
-        fetch('https://b9a10-server-side.vercel.app/arts', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        })
-            .then(res => res.json())
+        axiosSecure.post(url, formData)
             .then(data => {
-                console.log(data);
-                if (data.insertedId) {
+                console.log(data.data);
+                if (data.data.insertedId) {
                     Swal.fire({
                         title: "Great!",
                         text: "You added information successfully!",
@@ -117,7 +113,7 @@ const AddArtAndCraft = () => {
                             name="subcategory_name"
                             className="p-2 rounded-md border border-gray-300"
                             required
-                             >
+                        >
                             <option value="" disabled selected>Select subcategory</option>
                             <option value="Landscape Painting">Landscape Painting</option>
                             <option value="Portrait Drawing">Portrait Drawing</option>

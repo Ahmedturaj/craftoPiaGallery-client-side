@@ -5,12 +5,14 @@ import { FcProcess } from 'react-icons/fc';
 import { SiInstatus } from 'react-icons/si';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const MyCard = ({ artAndCraft, setArtAndCrafts, artAndCrafts }) => {
-    const { image, item_name,customization, price, processing_time, stock_status, _id } = artAndCraft;
+    const { image, item_name, customization, price, processing_time, stock_status, _id } = artAndCraft;
 
+    const axiosSecure = useAxiosSecure();
+    const url = `/arts/${_id}`
     const handleDelete = _id => {
-
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -21,13 +23,11 @@ const MyCard = ({ artAndCraft, setArtAndCrafts, artAndCrafts }) => {
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://b9a10-server-side.vercel.app/arts/${_id}`, {
-                    method: 'DELETE'
-                })
-                    .then(res => res.json())
+                axiosSecure.delete(url)
+                  
                     .then(data => {
-                        console.log(data);
-                        if(data.deletedCount>0){
+                        console.log(data.data);
+                        if (data.data.deletedCount > 0) {
                             Swal.fire({
                                 title: "Deleted!",
                                 text: "Your file has been deleted.",
@@ -36,14 +36,14 @@ const MyCard = ({ artAndCraft, setArtAndCrafts, artAndCrafts }) => {
                             const remaining = artAndCrafts.filter(art => art._id !== _id)
                             setArtAndCrafts(remaining);
                         }
-                       
+
                     })
-                
+
             }
             return;
         });
 
-       
+
 
     }
     return (

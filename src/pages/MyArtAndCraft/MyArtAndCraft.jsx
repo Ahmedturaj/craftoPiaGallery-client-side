@@ -4,17 +4,21 @@ import { Typewriter } from "react-simple-typewriter";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
 import MyCard from "./MyCard";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 
 const MyArtAndCraft = () => {
     const [artAndCrafts, setArtAndCrafts] = useState([]);
     const [customizations, setCustomizations] = useState("");
     const { user } = useContext(AuthContext);
+    const url = `/myArt/${user?.email}`;
+    const axiosSecure = useAxiosSecure();
     useEffect(() => {
-        fetch(`https://b9a10-server-side.vercel.app/myArt/${user?.email}`)
-            .then(res => res.json())
-            .then(data => setArtAndCrafts(data))
-    }, [user])
+        axiosSecure.get(url)
+            .then(res => {
+                setArtAndCrafts(res.data)
+            })
+    }, [url, axiosSecure])
     const handleCustomizationChange = (event) => {
         setCustomizations(event.target.value);
     };
@@ -57,7 +61,7 @@ const MyArtAndCraft = () => {
                 {
                     filteredItems && filteredItems.map(artAndCraft => (<MyCard key={artAndCraft._id} artAndCraft={artAndCraft} artAndCrafts={artAndCrafts} setArtAndCrafts={setArtAndCrafts}></MyCard>))
                 }
-                
+
             </div>
         </div>
     );

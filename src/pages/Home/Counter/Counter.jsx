@@ -3,20 +3,22 @@ import CountUp from "react-countup"
 import { useEffect, useState } from "react";
 import { MdCategory } from "react-icons/md";
 import { SiApmterminals } from "react-icons/si";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const Counter = () => {
     const [categories, setCategories] = useState([]);
     const [allArtItems, setAllArtItems] = useState([]);
+    const url1 = '/categories';
+    const url2 = '/arts';
+    const axiosSecure = useAxiosSecure();
     useEffect(() => {
-        fetch('https://b9a10-server-side.vercel.app/categories')
-            .then(res => res.json())
-            .then(data => setCategories(data))
-    }, []);
+        axiosSecure.get(url1)
+            .then(data => setCategories(data.data))
+    }, [url1, axiosSecure]);
     useEffect(() => {
-        fetch('https://b9a10-server-side.vercel.app/arts')
-            .then(res => res.json())
-            .then(data => setAllArtItems(data))
-    }, [])
+        axiosSecure.get(url2)
+            .then(data => setAllArtItems(data.data))
+    }, [url2, axiosSecure])
     const [counterOn, setCounterOn] = useState(false);
     return (
         <div className="mt-10 py-6 bg-gray-300">
@@ -24,7 +26,7 @@ const Counter = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center gap-10">
                     <div className="w-full md:w-[330px] text-center border rounded-br-[90px] rounded-tl-[90px] border-[#f17941] shadow-[#f17941] shadow-sm p-5 bg-gray-100">
                         <span className="flex justify-center mb-4 font-bold text-8xl text-[#f17941]">
-                            <MdCategory className="rotate-90 hover:rotate-45" style={{transition:'all 1s',}} />
+                            <MdCategory className="rotate-90 hover:rotate-45" style={{ transition: 'all 1s', }} />
                         </span>
                         <h2 className="font-medium text-xl flex items-center gap-3">
                             Total Art & Craft Categories{" "}

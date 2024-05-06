@@ -2,14 +2,16 @@ import { useEffect, useState } from "react";
 import { Typewriter } from "react-simple-typewriter";
 import CraftItem from "./CraftItem";
 import { Fade, Slide } from "react-awesome-reveal";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const CraftItems = () => {
     const [craftsItems, setCraftItems] = useState([]);
+    const url = '/arts';
+    const axiosSecure = useAxiosSecure();
     useEffect(() => {
-        fetch('https://b9a10-server-side.vercel.app/arts')
-            .then(res => res.json())
-            .then(data => setCraftItems(data))
-    }, [])
+        axiosSecure.get(url)
+            .then(data => setCraftItems(data.data))
+    }, [url, axiosSecure])
     return (
         <div>
             <div className=" flex gap-3 items-center justify-center border-b-2 rounded-lg border-[#f17941] w-80 md:ml-20"> <img src="https://assets-global.website-files.com/5e51c674258ffe10d286d30a/5e53552ff5fa1a9d22f727e2_peep-35.svg" alt="" className="w-14" />

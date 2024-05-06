@@ -2,17 +2,19 @@ import { useEffect, useState } from "react";
 import { Fade, Slide } from "react-awesome-reveal";
 import { Typewriter } from "react-simple-typewriter";
 import Cards from "./Cards";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 
 const CardCategory = () => {
     const [categories, setCategories] = useState([]);
+    const url = '/categories';
+    const axiosSecure = useAxiosSecure()
     useEffect(() => {
-        fetch('https://b9a10-server-side.vercel.app/categories')
-            .then(res => res.json())
+        axiosSecure.get(url)
             .then(data => {
-                setCategories(data)
+                setCategories(data.data)
             })
-    }, [])
+    }, [url, axiosSecure])
     return (
         <div>
             <div className=" flex gap-3 items-center justify-center border-b-2 rounded-lg border-[#f17941] w-80 md:ml-20"> <img src="https://assets-global.website-files.com/5e51c674258ffe10d286d30a/5e53552ff5fa1a9d22f727e2_peep-35.svg" alt="" className="w-14" />

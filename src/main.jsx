@@ -45,17 +45,17 @@ const router = createBrowserRouter([
       {
         path: '/category/:id',
         element: <SubDetails></SubDetails>,
-        loader: ({ params }) => fetch(`https://b9a10-server-side.vercel.app/category/${params.id}`)
+        loader: ({ params }) => fetch(`https://b9a10-server-side.vercel.app/category/${params.id}`,{credentials:'include'})
       },
       {
         path: '/update/:id',
         element: <PrivateRoutes><Update></Update></PrivateRoutes>,
-        loader: ({ params }) => fetch(`https://b9a10-server-side.vercel.app/arts/${params.id}`)
+        loader: ({ params }) => fetch(`https://b9a10-server-side.vercel.app/arts/${params.id}`,{credentials:'include'})
       },
       {
         path: '/subcategory/:subcategory_name',
         element: <Subcategory></Subcategory>,
-        loader: ({ params }) => fetch(`https://b9a10-server-side.vercel.app/categories/${params.subcategory_name}`)
+        loader: ({ params }) => fetch(`https://b9a10-server-side.vercel.app/categories/${params.subcategory_name}`,{credentials:'include'})
       }
     ]
   },

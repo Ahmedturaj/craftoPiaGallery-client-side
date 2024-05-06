@@ -4,13 +4,15 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import { FaGithubAlt, FaInstagram } from "react-icons/fa";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const Footer = () => {
     const { user } = useContext(AuthContext);
 
 
 
-
+    const url = '/users';
+    const axiosSecure = useAxiosSecure()
 
     const handleSubscribe = (e) => {
         e.preventDefault();
@@ -20,17 +22,11 @@ const Footer = () => {
         const user = { name, email, photo };
         console.log(user);
         const dialog = document.getElementById('my_modal_1')
-        fetch('https://b9a10-server-side.vercel.app/users', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(user)
-        })
-            .then(res => res.json())
+        
+        axiosSecure.post(url)
             .then(data => {
 
-                if (data.insertedId) {
+                if (data.data.insertedId) {
 
                     Swal.fire({
                         position: "bottom-end",

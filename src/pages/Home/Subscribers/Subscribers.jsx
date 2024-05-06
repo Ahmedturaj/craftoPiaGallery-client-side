@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import { Fade, Slide } from "react-awesome-reveal";
 import { Typewriter } from "react-simple-typewriter";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const Subscribers = () => {
     const [subscribers, setSubscribers] = useState([]);
+    const url = '/users';
+    const axiosSecure = useAxiosSecure();
     useEffect(() => {
-        fetch('https://b9a10-server-side.vercel.app/users')
-            .then(res => res.json())
-            .then(data => setSubscribers(data))
-    }, []);
+        axiosSecure.get(url)
+            .then(data => setSubscribers(data.data))
+    }, [url, axiosSecure]);
 
 
     return (
